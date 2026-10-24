@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>story-director graph demo</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #05090b; color: #d7ecee; font-family: "Cascadia Code", Consolas, monospace; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 40px 24px; }
+  h1 { letter-spacing: 0.3em; font-size: 24px; text-shadow: 0 0 10px rgba(127,179,186,0.5); margin: 0 0 4px; }
+  .sub { color: #5c757a; font-size: 12px; letter-spacing: 0.12em; margin-bottom: 22px; }
+  .badges { display: flex; gap: 10px; margin-bottom: 20px; }
+  .badge { font-size: 10px; letter-spacing: 0.22em; padding: 5px 12px; border: 1px solid rgba(143,227,168,0.5); color: #8fe3a8; }
+  .legend { display: flex; gap: 18px; font-size: 10px; letter-spacing: 0.18em; color: #5c757a; margin-bottom: 12px; }
+  .legend b { font-weight: normal; margin-right: 6px; }
+  svg { border: 1px solid rgba(170,200,205,0.22); background: #070d10; width: 100%; }
+  .node rect { fill: rgba(7,13,16,0.9); stroke-width: 1.5; }
+  .node text { fill: #d7ecee; font-family: inherit; font-size: 13px; }
+  .node .type { fill: #5c757a; font-size: 9px; letter-spacing: 2px; }
+  .edge { stroke: rgba(170,200,205,0.4); fill: none; }
+  .edge-label { fill: #46585c; font-size: 9px; letter-spacing: 1.5px; }
+  .red { stroke: #ff6b6b; } .gold { stroke: #ffd700; } .teal { stroke: #7fb3ba; } .orange { stroke: #ffaa00; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>STORY DIRECTOR</h1>
+  <div class="sub">THE EXAMPLE STORY AS A GRAPH — BRIEFING → DECODE → DRILL REMEDIATION → CHAPTER CHALLENGE</div>
+  <div class="badges">
+    <span class="badge">LINT · 0 ERRORS 0 WARNINGS</span>
+    <span class="badge" style="border-color:rgba(170,200,205,0.25);color:#5c757a">YAML → StoryDoc → walk() → PROGRESS</span>
+  </div>
+  <div class="legend">
+    <span><b style="color:#7fb3ba">▮</b>BRIEFING</span>
+    <span><b style="color:#ffd700">▮</b>TASK · DECODE</span>
+    <span><b style="color:#ffaa00">▮</b>TASK · DRILL</span>
+    <span><b style="color:#ffd700">▮</b>TASK · CHALLENGE</span>
+    <span><b style="color:#ff6b6b">▮</b>REMEDIATE EDGE</span>
+  </div>
+  <svg viewBox="0 0 920 400">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(170,200,205,0.5)"/>
+      </marker>
+    </defs>
+
+    <!-- edges -->
+    <path class="edge" d="M 190 90 C 240 90, 260 160, 320 160" marker-end="url(#arrow)"/>
+    <path class="edge" d="M 500 160 C 560 160, 580 90, 640 90" marker-end="url(#arrow)"/>
+    <text class="edge-label" x="555" y="118">next · pass ≥50%</text>
+    <path class="edge red" d="M 500 200 C 560 200, 580 300, 640 300" marker-end="url(#arrow)"/>
+    <text class="edge-label" x="545" y="262" style="fill:#ff6b6b">remediate · fail</text>
+    <path class="edge" d="M 820 130 C 850 200, 850 240, 820 280" marker-end="url(#arrow)"/>
+    <text class="edge-label" x="836" y="215">next</text>
+    <path class="edge" d="M 640 310 C 560 310, 540 240, 505 215" marker-end="url(#arrow)" stroke-dasharray="4 3"/>
+    <text class="edge-label" x="520" y="292">drill pass ≥60 → return_to</text>
+
+    <!-- nodes -->
+    <g class="node">
+      <rect class="teal" x="70" y="60" width="120" height="60"/>
+      <text x="90" y="86">s1.ch1</text>
+      <text class="type" x="90" y="104">BRIEFING · AUTO</text>
+    </g>
+    <g class="node">
+      <rect class="gold" x="320" y="130" width="180" height="60"/>
+      <text x="340" y="156">s1.ch1.task1</text>
+      <text class="type" x="340" y="174">TASK · DECODE ch1.u1</text>
+    </g>
+    <g class="node">
+      <rect class="teal" x="640" y="60" width="180" height="60"/>
+      <text x="660" y="86">s1.ch1.task2</text>
+      <text class="type" x="660" y="104">TASK · CHALLENGE ch1</text>
+    </g>
+    <g class="node">
+      <rect class="orange" x="640" y="270" width="180" height="60"/>
+      <text x="660" y="296">s1.ch1.drill1</text>
+      <text class="type" x="660" y="314">TASK · DRILL pass 60</text>
+    </g>
+
+    <!-- annotations -->
+    <text class="edge-label" x="70" y="180">▶ consult("/decode")</text>
+    <text class="edge-label" x="70" y="198">→ lines + target {ch:1, unit:1}</text>
+    <text class="edge-label" x="70" y="232">▶ consult("/challenge")</text>
+    <text class="edge-label" x="70" y="250">→ null (director never imprisons)</text>
+    <text class="edge-label" x="70" y="284">▶ fail → vars.return_to = task1</text>
+    <text class="edge-label" x="70" y="302">▶ drill pass → walk back</text>
+  </svg>
+</div>
+</body>
+</html>

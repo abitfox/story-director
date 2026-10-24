@@ -1,0 +1,63 @@
+{
+  "name": "story-director",
+  "version": "0.1.0",
+  "description": "Node-graph story director engine: a bypass layer that consults your command flow against a story graph, never imprisons the user. YAML is the single contract — AI pipelines generate, humans review, lint guards the release.",
+  "keywords": [
+    "story",
+    "narrative",
+    "engine",
+    "node-graph",
+    "interactive-fiction",
+    "yaml",
+    "dialogue",
+    "game",
+    "onboarding"
+  ],
+  "license": "MIT",
+  "author": "StoryDirector Authors",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./yaml": {
+      "types": "./dist/yaml.d.ts",
+      "import": "./dist/yaml.js",
+      "require": "./dist/yaml.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "js-yaml": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "js-yaml": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.2",
+    "js-yaml": "^4.1.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

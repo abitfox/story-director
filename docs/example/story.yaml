@@ -1,0 +1,62 @@
+# Example story document — the single contract between humans, editors and AI pipelines.
+# Generate offline with an LLM → review the diff → lint → import.
+season: s1
+version:
+  v_no: 1
+  name: "First Contact"
+  entry: s1.ch1.brief
+nodes:
+  - id: s1.ch1.brief
+    chapter: 1
+    type: briefing
+    auto: true
+    payload:
+      lines:
+        - zh: "欢迎登上观测站。通道已建立。"
+          en: "Welcome aboard the observatory. Uplink established."
+      next: s1.ch1.task1
+  - id: s1.ch1.task1
+    chapter: 1
+    type: task
+    payload:
+      action: decode
+      chapter: 1
+      unit: 1
+      lines:
+        - zh: "第一批信号进来了——解析它。"
+          en: "First signals are coming in — decode them."
+      doneLines:
+        - zh: "干净利落。下一批信号已排队。"
+          en: "Clean work. Next batch is queued."
+      failLines:
+        - zh: "噪声太多。先去训练舱热热手。"
+          en: "Too much noise. Warm up in the drill pod first."
+      remediate: s1.ch1.drill1
+      next: s1.ch1.task2
+  - id: s1.ch1.drill1
+    chapter: 1
+    type: task
+    payload:
+      action: drill
+      passScore: 60
+      lines:
+        - zh: "训练舱已加载。"
+          en: "Drill pod loaded."
+      doneLines:
+        - zh: "手感回来了。回到信号台。"
+          en: "Sharp again. Back to the console."
+      retryLines:
+        - zh: "还没到位，再来一次。"
+          en: "Not there yet — run it again."
+  - id: s1.ch1.task2
+    chapter: 1
+    type: task
+    payload:
+      action: challenge
+      chapter: 1
+      lines:
+        - zh: "最终校验：完成本章挑战。"
+          en: "Final verification: complete the chapter challenge."
+      doneLines:
+        - zh: "第一章完成。观测站为你敞开。"
+          en: "Chapter one complete. The observatory opens for you."
