@@ -13,6 +13,8 @@
 
 ---
 
+> ▶ **在线演示：[www.hackerenglish.com](https://www.hackerenglish.com)** —— 终端里的特工剧情正由本引擎导演。
+
 大多数叙事引擎会接管整个应用：玩家活在剧情里。StoryDirector 反过来——它坐在你现有命令流**旁边**：用户执行动作时先问导演；命中当前剧情节点，返回叙事台词和可选目标；否则返回 `null`，你的应用照常自由运行。
 <div align="center">
   <img src="docs/media/demo.png" alt="story-director 示例剧本图" width="820" />
@@ -92,8 +94,6 @@ if (errors.length === 0) {
 ## 来源
 
 抽取自 HackerEnglish 项目——它在一套英语学习终端里导演着完整的特工剧情。三轮设计讨论的记录在原项目 docs 中。见 [`docs/PORTING.md`](./docs/PORTING.md)。
-
-[www.hackerenglish.com](https://www.hackerenglish.com) 终端里展开的特工剧情正由本引擎导演。
 
 ## 许可
 

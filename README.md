@@ -13,6 +13,8 @@
 
 ---
 
+> ▶ **Live site: [www.hackerenglish.com](https://www.hackerenglish.com)** — the storyline in its terminal is directed by this engine.
+
 Most narrative engines take over your app: the player lives inside the story.
 StoryDirector inverts that — it sits **beside** your existing commands. When a
 user acts, ask the director; if the action matches the current story node, you
@@ -113,8 +115,6 @@ Extracted from the HackerEnglish project, where it directs a spy-thriller
 story across an English-learning terminal. The design notes (three rounds of
 discussion) live in the original repo's docs. See
 [`docs/PORTING.md`](./docs/PORTING.md).
-
-The storyline that unfolds in the terminal at [www.hackerenglish.com](https://www.hackerenglish.com) is directed by this engine.
 
 ## License
 
