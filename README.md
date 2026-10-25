@@ -114,6 +114,8 @@ story across an English-learning terminal. The design notes (three rounds of
 discussion) live in the original repo's docs. See
 [`docs/PORTING.md`](./docs/PORTING.md).
 
+The storyline that unfolds in the terminal at [www.hackerenglish.com](https://www.hackerenglish.com) is directed by this engine.
+
 ## License
 
 [MIT](./LICENSE).

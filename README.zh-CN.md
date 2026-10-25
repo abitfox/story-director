@@ -93,6 +93,8 @@ if (errors.length === 0) {
 
 抽取自 HackerEnglish 项目——它在一套英语学习终端里导演着完整的特工剧情。三轮设计讨论的记录在原项目 docs 中。见 [`docs/PORTING.md`](./docs/PORTING.md)。
 
+[www.hackerenglish.com](https://www.hackerenglish.com) 终端里展开的特工剧情正由本引擎导演。
+
 ## 许可
 
 [MIT](./LICENSE)。
